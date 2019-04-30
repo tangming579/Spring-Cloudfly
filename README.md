@@ -1,5 +1,5 @@
 # Spring-Cloudfly
-[![Badge](https://img.shields.io/badge/language-java-brigtgreen.svg)![](https://img.shields.io/npm/v/drone.svg)![Badge](https://img.shields.io/badge/link-996.icu-red.svg)](https://996.icu/#/en_US)
+[![Badge](https://img.shields.io/badge/language-java-brigtgreen.svg) ![](https://img.shields.io/npm/v/drone.svg) ![Badge](https://img.shields.io/badge/link-996.icu-red.svg)](https://996.icu/#/en_US)
 
 Spring Cloud 微服务相关知识学习总结
 
@@ -30,3 +30,12 @@ Spring Cloud 是一个基于Spring boot 实现的微服务架构开发工具。�
 
 ## 目录
 
+1. 服务治理：Spring Cloud Eureka
+2. 客户端负载均衡：Spring Cloud Ribbon
+3. 服务容错保护：Spring Cloud Hystrix
+4. 声明式服务调用：Spring Cloud Feign
+5. API网关服务：Spring Cloud Zuul
+6. 分布式配置中心：Spring Cloud Config
+7. 消息总线：Spring Cloud Bus
+8. 消息驱动的微服务：Spring Cloud Stream
+9. 分布式服务跟踪：Spring Cloud Sleuth
