@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 @EnableEurekaServer
+@EnableDiscoveryClient
 @SpringBootApplication
 @RestController
 public class EurekaServerApplication {
