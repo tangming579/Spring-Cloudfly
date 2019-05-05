@@ -11,7 +11,6 @@ Eureka Client 主要用于处理服务的注册与发现的java客户端，用�
 <div>
     <image src="../res/img/eureka-architecture-overview.png"></image>
 </div>
-
 ### 实践
 
 1. pom中添加依赖
@@ -57,4 +56,8 @@ Eureka Client 主要用于处理服务的注册与发现的java客户端，用�
    eureka.client.serviceUrl.defaultZone=http://localhost:${server.port}/eureka/
    ```
 
+**注意：**
 
+就像Spring Boot需要依赖对应的Spring Framework版本一样，Spring Cloud需要依赖对应版本的Spring Boot，不能随便使用版本。版本的对应关系可以在 <https://start.spring.io/info> 上查看。
+
+在springcloud的官网http://spring.io/projects/spring-cloud中也有相应的版本说明：
