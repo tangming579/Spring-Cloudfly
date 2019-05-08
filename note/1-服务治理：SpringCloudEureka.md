@@ -8,6 +8,10 @@ Eureka Server 提供注册服务，各个节点启动后，会在Eureka Server �
 
 Eureka Client 主要用于处理服务的注册与发现的java客户端，用于简化与Eureka Server的交互，客户端同时也是一个负载均衡器。在应用启动后将会向Eureka Server 发送心跳。如果Eureka Server在多个心跳周期内没有接收到某个节点的心跳，Eureka Server 将会从服务表中将这个节点移除。Netflix在其生产环境中使用的是另外的客户端，它提供基于流量、资源利用率以及出错状态的加权负载均衡。
 
+**注意：**
+
+从2.X起，eureka server 已经停止更新，替代方案为Consul。除了服务注册、发现，consul还提供了k-v存储等其它功能，consul的官网针对其它同类软件也做了详细比较，详见 [consul vs other software](https://www.consul.io/intro/vs/index.html)
+
 <div>
     <image src="../res/img/eureka-architecture-overview.png"></image>
 </div>
