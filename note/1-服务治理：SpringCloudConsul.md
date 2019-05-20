@@ -20,7 +20,7 @@ Spring Cloud Consul项目是针对Consul的服务治理实现。Consul是一个�
     <image src="../res/img/consul-arch.png"></image>
 </div>
 
-### 实践
+### Consul 服务端
 
 1. [下载consul](https://www.consul.io/downloads.html)，解压后启动Consul，启动成功后在浏览器中打开：http://localhost:8500/ui/dc1/services
 
@@ -67,16 +67,26 @@ Spring Cloud Consul项目是针对Consul的服务治理实现。Consul是一个�
 
 4. 在Application类上加@EnableDiscoveryClient注解，并新建Controller：
 
-   ```java
-   @EnableDiscoveryClient
-   @RestController
-   public class ServiceController {
-       @Autowired
-       private DiscoveryClient discoveryClient;
-   
-       @RequestMapping("/hello")
-       public String hello(){
-           return "hello consul";
-       }
-   }
-   ```
+   1. 
+
+      ```java
+      @EnableDiscoveryClient
+      @RestController
+      public class ServiceController {
+          @Autowired
+          private DiscoveryClient discoveryClient;
+      
+          @RequestMapping("/hello")
+          public String hello(){
+              return "hello consul";
+          }
+      }
+      ```
+
+5. 为了模拟注册均衡负载复制一份上面的项目重命名为 spring-cloud-consul-consumer-2,修改对应的端口，修改完成后依次启动两个项目。
+
+   <div>
+       <image src="../res/img/consul2.png"></image>
+   </div>
+
+### Consul 消费端
