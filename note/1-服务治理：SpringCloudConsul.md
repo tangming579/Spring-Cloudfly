@@ -22,18 +22,61 @@ Spring Cloud Consul项目是针对Consul的服务治理实现。Consul是一个�
 
 ### 实践
 
-1. pom中添加依赖
+1. [下载consul](https://www.consul.io/downloads.html)，解压后启动Consul，启动成功后在浏览器中打开：http://localhost:8500/ui/dc1/services
+
+   <div>
+       <image src="../res/img/consul1.png"></image>
+   </div>
+
+2. pom中添加依赖
 
    ```xml
    <dependency>
      <groupId>org.springframework.cloud</groupId>
      <artifactId>spring-cloud-starter-consul-discovery</artifactId>
    </dependency>
+   <!--健康检查依赖于此包!-->
+   <dependency>
+   	<groupId>org.springframework.boot</groupId>
+   	<artifactId>spring-boot-starter-actuator</artifactId>
+   </dependency>
+   
+   <dependencyManagement>
+   	<dependencies>
+   		<dependency>
+   			<groupId>org.springframework.cloud</groupId>
+   			<artifactId>spring-cloud-dependencies</artifactId>
+   			<version>Greenwich.SR1</version>
+   			<type>pom</type>
+   			<scope>import</scope>
+   		</dependency>
+   	</dependencies>
+   </dependencyManagement>
    ```
 
-2. 配置文件
+3. 配置文件
 
    ```
+   spring.application.name=spring-cloud-consul-consumer
+   server.port=8503
    spring.cloud.consul.host=localhost
    spring.cloud.consul.port=8500
+   #设置不需要注册到 consul 中
+   spring.cloud.consul.discovery.register=false
+   ```
+
+4. 在Application类上加@EnableDiscoveryClient注解，并新建Controller：
+
+   ```java
+   @EnableDiscoveryClient
+   @RestController
+   public class ServiceController {
+       @Autowired
+       private DiscoveryClient discoveryClient;
+   
+       @RequestMapping("/hello")
+       public String hello(){
+           return "hello consul";
+       }
+   }
    ```
