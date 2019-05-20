@@ -62,7 +62,7 @@ Spring Cloud Consul项目是针对Consul的服务治理实现。Consul是一个�
    spring.cloud.consul.host=localhost
    spring.cloud.consul.port=8500
    #设置不需要注册到 consul 中
-   spring.cloud.consul.discovery.register=false
+   spring.cloud.consul.discovery.register=true
    ```
 
 4. 在Application类上加@EnableDiscoveryClient注解，并新建Controller：
