@@ -11,7 +11,7 @@ Spring Cloud Consul项目是针对Consul的服务治理实现。Consul是一个�
 
 服务发现的常用框架：
 
-| Feature              | euerka                       | Consul                 | zookeeper             | etcd              |
+| Feature              | Eureka                       | Consul                 | zookeeper             | etcd              |
 | -------------------- | ---------------------------- | ---------------------- | --------------------- | ----------------- |
 | 服务健康检查         | 可配支持                     | 服务状态，内存，硬盘等 | (弱)长连接，keepalive | 连接心跳          |
 | 多数据中心           | —                            | 支持                   | —                     | —                 |
@@ -28,6 +28,13 @@ Consul结构：
 <div>
     <image src="../res/img/consul-arch.png"></image>
 </div>
+Consul原理：
+
+<div>
+    <image src="../res/img/consul_service.png"></image>
+</div>
+
+
 
 ### 构建Consul 服务端
 
@@ -66,7 +73,7 @@ Consul结构：
 3. 配置文件
 
    ```
-   spring.application.name=spring-cloud-consul-consumer
+   spring.application.name=spring-cloud-consul-producer 
    server.port=8503
    spring.cloud.consul.host=localhost
    spring.cloud.consul.port=8500
