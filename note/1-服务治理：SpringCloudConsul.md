@@ -9,18 +9,27 @@ Spring Cloud Consul项目是针对Consul的服务治理实现。Consul是一个�
 - Key/Value存储：一个用来存储动态配置的系统。提供简单的HTTP接口，可以在任何地方操作。
 - 多数据中心：无需复杂的配置，即可支持任意数量的区域。
 
-服务发现的框架常用的有
+服务发现的常用框架：
 
-- zookeeper
-- eureka
-- etcd
-- consul
+| Feature              | euerka                       | Consul                 | zookeeper             | etcd              |
+| -------------------- | ---------------------------- | ---------------------- | --------------------- | ----------------- |
+| 服务健康检查         | 可配支持                     | 服务状态，内存，硬盘等 | (弱)长连接，keepalive | 连接心跳          |
+| 多数据中心           | —                            | 支持                   | —                     | —                 |
+| kv 存储服务          | —                            | 支持                   | 支持                  | 支持              |
+| 一致性               | —                            | raft                   | paxos                 | raft              |
+| cap                  | ap                           | cp                     | cp                    | cp                |
+| 使用接口(多语言能力) | http（sidecar）              | 支持 http 和 dns       | 客户端                | http/grpc         |
+| watch 支持           | 支持 long polling/大部分增量 | 全量/支持long polling  | 支持                  | 支持 long polling |
+| 自身监控             | metrics                      | metrics                | —                     | metrics           |
+| 安全                 | —                            | acl /https             | acl                   | https 支持（弱）  |
+| spring cloud 集成    | 已支持                       | 已支持                 | 已支持                | 已支持            |
 
+Consul结构：
 <div>
     <image src="../res/img/consul-arch.png"></image>
 </div>
 
-### Consul 服务端
+### 构建Consul 服务端
 
 1. [下载consul](https://www.consul.io/downloads.html)，解压后启动Consul，启动成功后在浏览器中打开：http://localhost:8500/ui/dc1/services
 
@@ -89,4 +98,4 @@ Spring Cloud Consul项目是针对Consul的服务治理实现。Consul是一个�
        <image src="../res/img/consul2.png"></image>
    </div>
 
-### Consul 消费端
+### 构建Consul 消费端
