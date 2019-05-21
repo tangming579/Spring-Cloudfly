@@ -38,13 +38,19 @@ Consul原理：
 
 ### 构建Consul 服务端
 
-1. [下载consul](https://www.consul.io/downloads.html)，解压后启动Consul，启动成功后在浏览器中打开：http://localhost:8500/ui/dc1/services
+1. [下载consul](https://www.consul.io/downloads.html)，解压后进入consul所在目录，启动shell输入：
+
+   ```
+    ./consul.exe agent -dev
+   ```
+
+2. 启动Consul，启动成功后在浏览器中打开：http://localhost:8500/ui/dc1/services
 
    <div>
        <image src="../res/img/consul1.png"></image>
    </div>
 
-2. pom中添加依赖
+3. pom中添加依赖
 
    ```xml
    <dependency>
@@ -70,7 +76,7 @@ Consul原理：
    </dependencyManagement>
    ```
 
-3. 配置文件
+4. 配置文件
 
    ```
    spring.application.name=spring-cloud-consul-producer 
@@ -81,7 +87,7 @@ Consul原理：
    spring.cloud.consul.discovery.register=true
    ```
 
-4. 在Application类上加@EnableDiscoveryClient注解，并新建Controller：
+5. 在Application类上加@EnableDiscoveryClient注解，并新建Controller：
 
    1. 
 
@@ -99,10 +105,48 @@ Consul原理：
       }
       ```
 
-5. 为了模拟注册均衡负载复制一份上面的项目重命名为 spring-cloud-consul-consumer-2,修改对应的端口，修改完成后依次启动两个项目。
+6. 为了模拟注册均衡负载复制一份上面的项目重命名为 spring-cloud-consul-consumer-2,修改对应的端口，修改完成后依次启动两个项目。
 
    <div>
        <image src="../res/img/consul2.png"></image>
    </div>
 
 ### 构建Consul 消费端
+
+1. 配置文件
+
+   ```
+   spring.application.name=spring-cloud-consul-consumer
+   server.port=8503
+   spring.cloud.consul.host=127.0.0.1
+   spring.cloud.consul.port=8500
+   #设置不需要注册到 consul 中
+   spring.cloud.consul.discovery.register=false
+   ```
+
+2. 提供服务：
+
+   ```java
+   @RestController
+   public class ServiceController {
+   
+       @Autowired
+       private LoadBalancerClient loadBalancer;
+       @Autowired
+       private DiscoveryClient discoveryClient;
+   
+       //获取所有服务
+       @RequestMapping("/services")
+       public Object services() {
+           return discoveryClient.getInstances("service-producer");
+       }
+   
+       //从所有服务中选择一个服务（轮询）
+       @RequestMapping("/discover")
+       public Object discover() {
+           return loadBalancer.choose("service-producer").getUri().toString();
+       }
+   }
+   ```
+
+3. 

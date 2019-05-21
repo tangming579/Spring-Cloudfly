@@ -1,4 +1,4 @@
-package Controller;
+package com.infly.springcloudconsul.controller;
 
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,6 +11,6 @@ public class ServiceController {
     // hello 的服务
     @RequestMapping("/hello")
     public String hello(){
-        return "hello consul 2";
+        return "hello consul";
     }
 }
