@@ -141,12 +141,22 @@ Consul原理：
            return discoveryClient.getInstances("service-producer");
        }
    
-       //从所有服务中选择一个服务（轮询）
-       @RequestMapping("/discover")
-       public Object discover() {
-           return loadBalancer.choose("service-producer").getUri().toString();
+       @RequestMapping("call")
+       public String call(){
+           ServiceInstance serviceInstance = loadBalancer.choose("service-producer");
+           System.out.println("服务地址："+serviceInstance.getUri());
+           System.out.println("服务名称："+serviceInstance.getServiceId());
+   
+           String callServiceResult = new RestTemplate().getForObject(serviceInstance.getUri().toString() + "hello",String.class);
+           System.out.println(callServiceResult);
+           return callServiceResult;
        }
    }
    ```
 
-3. 
+3. 使用 RestTemplate 进行远程调用。添加完之后重启 spring-cloud-consul-consumer 项目。在浏览器中访问地址：`http://localhost:8503/call`，依次返回结果如下：
+
+   ```
+   hello consul
+   hello consul 2
+   ```
