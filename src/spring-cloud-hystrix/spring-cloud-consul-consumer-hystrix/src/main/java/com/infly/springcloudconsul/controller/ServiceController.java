@@ -1,14 +1,17 @@
 package com.infly.springcloudconsul.controller;
 
+import com.infly.springcloudconsul.Service.HelloRemoteHystrix;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
+import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 @RestController
+@FeignClient(name= "spring-cloud-producer",fallback = HelloRemoteHystrix.class)
 public class ServiceController {
 
     @Autowired
