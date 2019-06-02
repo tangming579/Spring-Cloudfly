@@ -7,3 +7,9 @@
 
 ### 使用
 
+1. 引入依赖：
+2. 主类加入@EnableFeginClients注解
+3. 定义Service接口，通过FeignClient注解指定服务名来绑定服务
+4. 参数绑定
+5. 配置文件
+
