@@ -2,12 +2,11 @@ package com.infly.springcloudconsul.Service;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-@Component
-@FeignClient("helloservice")
-public class HelloService {
+@FeignClient(name="helloservice",fallback = HelloServiceFallback.class)
+public interface HelloService {
 
-    public String call() {
-        return "this messge send failed ";
-    }
+    @RequestMapping("/hello")
+    public String hello();
 }
