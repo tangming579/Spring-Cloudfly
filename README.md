@@ -35,7 +35,7 @@ Spring Cloud 是一个基于Spring boot 实现的微服务架构开发工具。�
 3. [服务治理：Spring Cloud Consul](https://github.com/tangming579/Spring-Cloudfly/blob/master/note/1-%E6%9C%8D%E5%8A%A1%E6%B2%BB%E7%90%86%EF%BC%9ASpringCloudConsul.md)
 4. [客户端负载均衡：Spring Cloud Ribbon](https://github.com/tangming579/Spring-Cloudfly/blob/master/note/2-%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%EF%BC%9ASpringCloudRibbon.md)
 5. [服务容错保护：Spring Cloud Hystrix](https://github.com/tangming579/Spring-Cloudfly/blob/master/note/3-%E7%86%94%E6%96%AD%E5%99%A8Hystrix.md)
-6. 声明式服务调用：Spring Cloud Feign
+6. [声明式服务调用：Spring Cloud Feign](https://github.com/tangming579/Spring-Cloudfly/blob/master/note/4-%E5%A3%B0%E6%98%8E%E5%BC%8F%E6%9C%8D%E5%8A%A1%E8%B0%83%E7%94%A8Feign.md)
 7. API网关服务：Spring Cloud Zuul
 8. 分布式配置中心：Spring Cloud Config
 9. 消息总线：Spring Cloud Bus
