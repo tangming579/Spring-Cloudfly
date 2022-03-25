@@ -19,7 +19,6 @@ Spring Cloud 是一个基于Spring boot 实现的微服务架构开发工具。�
   - Feign：基于Ribbon和Hystrix的声明式服务调用组件
   - Zuul：网关组件
   - Archaius：外部化配置组件
-
 - Spring Cloud Bus：事件、消息总线，用于传播集群中的状态变化或事件，以触发后续处理，比如用来动态刷新配置等。
 - Spring Cloud Cluster：针对ZooKeeper、Redis、Hazelcast、Consul的选举算法和通用状态模块实现。
 - Spring Cloud Cloudfoundry：与Pivotal Cloudfoudry的整合支持。
@@ -28,7 +27,23 @@ Spring Cloud 是一个基于Spring boot 实现的微服务架构开发工具。�
 - Spring Cloud Security：安全工具包，提供在Zuul代理中对OAuth2客户端请求的中继器。
 - ……
 
+## 与Spring Cloud Alibaba对比
+
+| 框架               | Spring Cloud                 | Spring Cloud Alibaba     |
+| ------------------ | ---------------------------- | ------------------------ |
+| 注册中心           | Eureka                       | nacos                    |
+| 消息中间件         | 无(第三方替代方案：RabbitMQ) | RocketMQ                 |
+| 分布式事务解决方案 | 无(第三方替代方案：2pc)      | Seata                    |
+| 分布式调度服务     | 无(第三方替代方案：xxl-job)  | Alibaba Cloud SchedulerX |
+| 客户端负载均衡     | Ribbon                       | Ribbon                   |
+| 分布式配置中心     | Spring Cloud Config          | nacos                    |
+| 网关               | Netflix Zuul                 | Gateway                  |
+| 熔断降级           | Hystrix                      | Sentinel                 |
+| 短信平台           | 无                           | Alibaba Cloud  SMS       |
+
 ## 目录
+
+### Spring Cloud
 
 1. [总览](https://github.com/tangming579/Spring-Cloudfly/blob/master/note/0-Overview.md)
 2. [服务治理：Spring Cloud Eureka](https://github.com/tangming579/Spring-Cloudfly/blob/master/note/1-%E6%9C%8D%E5%8A%A1%E6%B2%BB%E7%90%86%EF%BC%9ASpringCloudEureka.md)
@@ -41,3 +56,8 @@ Spring Cloud 是一个基于Spring boot 实现的微服务架构开发工具。�
 9. 消息总线：Spring Cloud Bus
 10. 消息驱动的微服务：Spring Cloud Stream
 11. 分布式服务跟踪：Spring Cloud Sleuth
+
+### Spring Cloud Alibaba
+
+1. 服务注册与发现：Alibaba Nacos
+2. Nacos配置中心
