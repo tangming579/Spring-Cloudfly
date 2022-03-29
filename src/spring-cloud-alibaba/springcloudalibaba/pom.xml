@@ -5,6 +5,9 @@
 	<modules>
 		<module>order</module>
 		<module>stock</module>
+		<module>order-nacos</module>
+		<module>stock-nacos</module>
+		<module>order-ribbon</module>
 	</modules>
 	<properties>
 		<java.version>11</java.version>
