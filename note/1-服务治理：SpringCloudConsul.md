@@ -89,21 +89,19 @@ Consul原理：
 
 5. 在Application类上加@EnableDiscoveryClient注解，并新建Controller：
 
-   1. 
-
-      ```java
-      @EnableDiscoveryClient
-      @RestController
-      public class ServiceController {
-          @Autowired
-          private DiscoveryClient discoveryClient;
-      
-          @RequestMapping("/hello")
-          public String hello(){
-              return "hello consul";
-          }
-      }
-      ```
+   ```java
+   @EnableDiscoveryClient
+   @RestController
+   public class ServiceController {
+       @Autowired
+       private DiscoveryClient discoveryClient;
+   
+       @RequestMapping("/hello")
+       public String hello(){
+           return "hello consul";
+       }
+   }
+   ```
 
 6. 为了模拟注册均衡负载复制一份上面的项目重命名为 spring-cloud-consul-consumer-2,修改对应的端口，修改完成后依次启动两个项目。
 

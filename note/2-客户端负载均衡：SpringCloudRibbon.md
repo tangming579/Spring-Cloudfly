@@ -17,7 +17,7 @@ Spring Cloud Ribbon是一个基于HTTP和TCP的客户端负载均衡工具。可
 - 服务端负载均衡(Nginx)
   - 服务实例的**清单在服务端**，服务器进行负载均衡算法分配
 
-### TestTemplate
+### RestTemplate
 
 通过Eureka或Ribbon服务治理框架，我们可以通过服务名来获取具体的服务实例的位置(IP)。一般在使用Spring Cloud的时候**不需要自己手动创建**HttpClient来进行远程调用。可以使用Spring封装好的**RestTemplate**工具类：
 
